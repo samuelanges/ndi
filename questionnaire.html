@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire - Profilage Sportif</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon">🏃</span>
+                <span class="brand-text">SportProfil</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="questionnaire.html">Questionnaire</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="conseils.html">Conseils</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Container -->
+    <section class="quiz-section">
+        <div class="container">
+            <div class="quiz-container">
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-indicator" id="progressIndicator"></div>
+                    <div class="progress-bar-custom">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <!-- Question 1 -->
+                <div class="question-slide" id="question1">
+                    <h2 class="question-title">Question 1 : Quel est ton niveau sportif actuel ?</h2>
+
+                    <div class="answers-grid">
+                        <div class="answer-card answer-blue" data-value="debutant"
+                            onclick="selectAnswer(this, 1, event)">
+                            <div class="answer-content">
+                                <span class="answer-emoji">🌱</span>
+                                <span class="answer-text">Débutant(e)</span>
+                                <span class="answer-description">Je démarre ou je reprends</span>
+                            </div>
+                            <div class="answer-footer"></div>
+                        </div>
+
+                        <div class="answer-card answer-pink" data-value="intermediaire"
+                            onclick="selectAnswer(this, 1, event)">
+                            <div class="answer-content">
+                                <span class="answer-emoji">🔥</span>
+                                <span class="answer-text">Intermédiaire</span>
+                                <span class="answer-description">Je pratique régulièrement</span>
+                            </div>
+                            <div class="answer-footer"></div>
+                        </div>
+
+                        <div class="answer-card answer-coral" data-value="avance"
+                            onclick="selectAnswer(this, 1, event)">
+                            <div class="answer-content">
+                                <span class="answer-emoji">💪</span>
+                                <span class="answer-text">Avancé(e)</span>
+                                <span class="answer-description">Je m'entraîne intensivement</span>
+                            </div>
+                            <div class="answer-footer"></div>
+                        </div>
+
+                        <div class="answer-card answer-yellow" data-value="expert"
+                            onclick="selectAnswer(this, 1, event)">
+                            <div class="answer-content">
+                                <span class="answer-emoji">🏆</span>
+                                <span class="answer-text">Expert(e)</span>
+                                <span class="answer-description">Objectifs précis / compétition</span>
+                            </div>
+                            <div class="answer-footer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-slide hidden" id="question2">
+                    <h2 class="question-title">Question 2 : Quel est ton principal objectif ?</h2>
+
+                    <div class="answers-grid">
+                        <div class="answer-card answer-blue" data-value="remise-forme"
+                            onclick="selectAnswer(this, 2, event)">
+                            <div class="answer-content">
+                                <span class="answer-emoji">🧘</span>
+                                <span class="answer-text">Remise en forme légère</span>
+                                <span class="answer-description">Retrouver une bonne condition</span>
+                            </div>
+                            <div class="answer-footer"></div>
+                        </div>
+
+                        <div class="answer-card answer-pink" data-value="amelioration"
+                            onclick="selectAnswer(this, 2, event)">
+                            <div class="answer-content">
+                                <span class="answer-emoji">📈</span>
+                                <span class="answer-text">Amélioration générale</span>
+                                <span class="answer-description">Progresser globalement</span>
+                            </div>
+                            <div class="answer-footer"></div>
+                        </div>
+
+                        <div class="answer-card answer-coral" data-value="performance"
+                            onclick="selectAnswer(this, 2, event)">
+                            <div class="answer-content">
+                                <span class="answer-emoji">⚡</span>
+                                <span class="answer-text">Performance physique</span>
+                                <span class="answer-description">Atteindre de nouveaux sommets</span>
+                            </div>
+                            <div class="answer-footer"></div>
+                        </div>
+
+                        <div class="answer-card answer-yellow" data-value="optimisation"
+                            onclick="selectAnswer(this, 2, event)">
+                            <div class="answer-content">
+                                <span class="answer-emoji">🎯</span>
+                                <span class="answer-text">Optimisation / Compétition</span>
+                                <span class="answer-description">Viser l'excellence</span>
+                            </div>
+                            <div class="answer-footer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="question-slide hidden" id="results">
+                    <div class="results-container">
+                        <div class="results-icon">🎉</div>
+                        <h2 class="results-title">Bravo ! Quiz terminé !</h2>
+                        <p class="results-description">Ton profil sportif a été analysé avec succès.</p>
+
+                        <div class="results-summary" id="resultsSummary">
+                            <!-- Will be filled by JS -->
+                        </div>
+
+                        <a href="conseils.html" class="btn btn-start">
+                            <span>Voir mes conseils personnalisés</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
