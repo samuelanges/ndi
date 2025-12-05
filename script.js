@@ -1,81 +1,67 @@
 /**
- * SPORT PROFIL - Quiz Application
- * Niveau 1: Profilage du Sportif
+ * NIRD - Quiz Application
+ * Numérique Inclusif Responsable Durable
  */
 
-// Quiz State
 let currentQuestion = 1;
 const totalQuestions = 2;
-let answers = {
-    niveau: null,
-    objectif: null
-};
+let answers = { niveau: null, objectif: null };
 
-// Data for conseils
 const conseilsData = {
     debutant: {
         icon: '🌱',
         text: 'Débutant(e)',
         conseils: [
-            { title: 'Commence doucement', text: 'Privilégie des séances courtes (20-30 min) pour habituer ton corps progressivement.' },
-            { title: 'Établis une routine', text: 'Fixe-toi 2-3 séances par semaine à des horaires réguliers pour créer une habitude.' },
-            { title: 'Écoute ton corps', text: 'Les courbatures sont normales au début, mais une douleur vive nécessite du repos.' },
-            { title: 'Célèbre chaque victoire', text: 'Chaque séance réalisée est une réussite. Note tes progrès pour rester motivé(e) !' }
+            { title: 'Découvre ton impact', text: 'Savais-tu qu\'un email avec pièce jointe = 19g de CO2 ? Commence par prendre conscience de ton empreinte numérique.' },
+            { title: 'Prolonge tes appareils', text: 'Un smartphone utilisé 4 ans au lieu de 2 divise son impact environnemental par deux.' },
+            { title: 'Nettoie tes emails', text: 'Supprime régulièrement tes emails inutiles et désabonne-toi des newsletters non lues.' },
+            { title: 'Éteins tes appareils', text: 'Éteindre plutôt que mettre en veille permet d\'économiser jusqu\'à 10% d\'énergie.' }
         ]
     },
     intermediaire: {
-        icon: '🔥',
-        text: 'Intermédiaire',
+        icon: '🌿',
+        text: 'Sensibilisé(e)',
         conseils: [
-            { title: 'Varie les exercices', text: 'Alterne entre cardio, renforcement et flexibilité pour un développement équilibré.' },
-            { title: 'Augmente progressivement', text: 'Ajoute 10% d\'intensité ou de volume chaque semaine pour continuer à progresser.' },
-            { title: 'Soigne ta récupération', text: 'Intègre des étirements et des jours de repos actif pour optimiser tes résultats.' },
-            { title: 'Fixe des objectifs SMART', text: 'Des objectifs Spécifiques, Mesurables, Atteignables, Réalistes et Temporels te guideront.' }
+            { title: 'Optimise ton wifi', text: 'Privilégie le wifi à la 4G/5G : c\'est jusqu\'à 20 fois moins énergivore.' },
+            { title: 'Compresse tes fichiers', text: 'Réduis la taille de tes images et documents avant de les envoyer ou stocker.' },
+            { title: 'Limite le streaming HD', text: 'Regarder en qualité standard plutôt qu\'en 4K divise par 4 l\'empreinte carbone.' },
+            { title: 'Pense reconditionné', text: 'Acheter un appareil reconditionné réduit l\'impact environnemental de 80%.' }
         ]
     },
     avance: {
-        icon: '💪',
-        text: 'Avancé(e)',
+        icon: '🌳',
+        text: 'Engagé(e)',
         conseils: [
-            { title: 'Périodise ton entraînement', text: 'Alterne entre phases d\'intensité et de récupération pour éviter le surentraînement.' },
-            { title: 'Travaille tes points faibles', text: 'Identifie et cible spécifiquement les zones à améliorer dans ta pratique.' },
-            { title: 'Optimise ta nutrition', text: 'Adapte ton alimentation à tes entraînements : protéines, glucides, hydratation.' },
-            { title: 'Analyse tes performances', text: 'Utilise des outils de suivi pour mesurer tes progrès et ajuster ton approche.' }
+            { title: 'Hébergement vert', text: 'Choisis des hébergeurs utilisant des énergies renouvelables pour tes sites et données.' },
+            { title: 'Mode sombre', text: 'Utilise le mode sombre sur les écrans OLED pour réduire la consommation d\'énergie.' },
+            { title: 'Audite ton usage cloud', text: 'Fais le tri dans ton stockage cloud : chaque Go stocké consomme de l\'énergie.' },
+            { title: 'Partage tes connaissances', text: 'Sensibilise ton entourage aux bonnes pratiques du numérique responsable.' }
         ]
     },
     expert: {
-        icon: '🏆',
+        icon: '🦋',
         text: 'Expert(e)',
         conseils: [
-            { title: 'Planifie sur le long terme', text: 'Établis un plan annuel avec des objectifs de compétition et des pics de forme.' },
-            { title: 'Récupération avancée', text: 'Intègre cryothérapie, massages, et sommeil optimisé dans ta routine.' },
-            { title: 'Mental de champion', text: 'Travaille la visualisation et la gestion du stress pour performer le jour J.' },
-            { title: 'Entoure-toi d\'experts', text: 'Coach, nutritionniste, kiné : une équipe pluridisciplinaire pour aller plus loin.' }
+            { title: 'Éco-conception web', text: 'Applique les principes d\'éco-conception pour créer des sites légers et performants.' },
+            { title: 'Mesure ton impact', text: 'Utilise des outils comme Website Carbon Calculator pour mesurer l\'impact de tes projets.' },
+            { title: 'Influence positive', text: 'Deviens ambassadeur du numérique responsable dans ton organisation.' },
+            { title: 'Innovation durable', text: 'Explore les technologies low-tech et les alternatives durables dans tes projets.' }
         ]
     }
 };
 
 const objectifsData = {
-    'remise-forme': { icon: '🧘', text: 'Remise en forme légère' },
-    'amelioration': { icon: '📈', text: 'Amélioration générale' },
-    'performance': { icon: '⚡', text: 'Performance physique' },
-    'optimisation': { icon: '🎯', text: 'Optimisation / Compétition' }
+    'remise-forme': { icon: '📱', text: 'Réduire mon usage' },
+    'amelioration': { icon: '♻️', text: 'Optimiser mes pratiques' },
+    'performance': { icon: '🌍', text: 'Réduire mon empreinte' },
+    'optimisation': { icon: '💡', text: 'Inspirer les autres' }
 };
 
-/**
- * Initialize the quiz
- */
-function initQuiz() {
-    updateProgress();
-}
+function initQuiz() { updateProgress(); }
 
-/**
- * Update progress bar
- */
 function updateProgress() {
     const progressFill = document.getElementById('progressFill');
     const progressIndicator = document.getElementById('progressIndicator');
-
     if (progressFill && progressIndicator) {
         const percentage = ((currentQuestion - 1) / totalQuestions) * 100;
         progressFill.style.width = percentage + '%';
@@ -83,97 +69,51 @@ function updateProgress() {
     }
 }
 
-/**
- * Create star particle effect
- */
 function createStarBurst(x, y) {
-    const stars = ['⭐', '✨', '🌟', '💫', '⚡'];
-    const colors = ['#ffc800', '#ff9eb4', '#1cb0f6', '#ce82ff', '#58cc02'];
+    const stars = ['⭐', '✨', '🌟', '💫', '🦋'];
     const particleCount = 12;
-
-    // Create ring burst
     const ring = document.createElement('div');
     ring.className = 'ring-burst';
     ring.style.left = x + 'px';
     ring.style.top = y + 'px';
     document.body.appendChild(ring);
-
-    // Remove ring after animation
     setTimeout(() => ring.remove(), 600);
-
-    // Create star particles
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'star-particle';
         particle.textContent = stars[Math.floor(Math.random() * stars.length)];
-
-        // Calculate angle for even distribution
         const angle = (i / particleCount) * Math.PI * 2;
         const distance = 80 + Math.random() * 60;
-        const tx = Math.cos(angle) * distance;
-        const ty = Math.sin(angle) * distance;
-
         particle.style.left = x + 'px';
         particle.style.top = y + 'px';
-        particle.style.setProperty('--tx', tx + 'px');
-        particle.style.setProperty('--ty', ty + 'px');
-        particle.style.animationDelay = (Math.random() * 0.1) + 's';
-
+        particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+        particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
         document.body.appendChild(particle);
-
-        // Remove particle after animation
         setTimeout(() => particle.remove(), 900);
     }
 }
 
-/**
- * Select an answer
- */
 function selectAnswer(card, questionNumber, event) {
-    // Get click position for star effect
     const rect = card.getBoundingClientRect();
     const x = event ? event.clientX : rect.left + rect.width / 2;
     const y = event ? event.clientY : rect.top + rect.height / 2;
-
-    // Create star burst effect
     createStarBurst(x, y);
-
-    // Add sparkle effect to card
     card.classList.add('sparkle');
     setTimeout(() => card.classList.remove('sparkle'), 500);
-
-    // Remove previous selection
-    const cards = card.parentElement.querySelectorAll('.answer-card');
-    cards.forEach(c => c.classList.remove('selected'));
-
-    // Add selection to current card
+    card.parentElement.querySelectorAll('.answer-card').forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
-
-    // Store answer
     const value = card.dataset.value;
-    if (questionNumber === 1) {
-        answers.niveau = value;
-    } else if (questionNumber === 2) {
-        answers.objectif = value;
-    }
-
-    // Animate and go to next question after delay
+    if (questionNumber === 1) answers.niveau = value;
+    else if (questionNumber === 2) answers.objectif = value;
     setTimeout(() => {
-        if (questionNumber < totalQuestions) {
-            goToNextQuestion();
-        } else {
-            showResults();
-        }
+        if (questionNumber < totalQuestions) goToNextQuestion();
+        else showResults();
     }, 700);
 }
 
-/**
- * Go to next question
- */
 function goToNextQuestion() {
     const currentSlide = document.getElementById('question' + currentQuestion);
     const nextSlide = document.getElementById('question' + (currentQuestion + 1));
-
     if (currentSlide && nextSlide) {
         currentSlide.classList.add('hidden');
         nextSlide.classList.remove('hidden');
@@ -182,41 +122,24 @@ function goToNextQuestion() {
     }
 }
 
-/**
- * Show results
- */
 function showResults() {
     const question2 = document.getElementById('question2');
     const results = document.getElementById('results');
     const progressFill = document.getElementById('progressFill');
-
     if (question2 && results) {
         question2.classList.add('hidden');
         results.classList.remove('hidden');
-
-        // Complete progress bar
-        if (progressFill) {
-            progressFill.style.width = '100%';
-        }
-
-        // Save to localStorage
+        if (progressFill) progressFill.style.width = '100%';
         saveProfile();
-
-        // Display summary
         displayResultsSummary();
     }
 }
 
-/**
- * Display results summary
- */
 function displayResultsSummary() {
     const summaryContainer = document.getElementById('resultsSummary');
     if (!summaryContainer) return;
-
     const niveau = conseilsData[answers.niveau];
     const objectif = objectifsData[answers.objectif];
-
     summaryContainer.innerHTML = `
         <div class="result-item">
             <span class="result-label">Ton niveau</span>
@@ -229,63 +152,38 @@ function displayResultsSummary() {
     `;
 }
 
-/**
- * Save profile to localStorage
- */
 function saveProfile() {
-    const profile = {
+    localStorage.setItem('sportProfil', JSON.stringify({
         niveau: answers.niveau,
         objectif: answers.objectif,
         date: new Date().toISOString()
-    };
-    localStorage.setItem('sportProfil', JSON.stringify(profile));
+    }));
 }
 
-/**
- * Load conseils based on saved profile
- */
 function loadConseils() {
     const savedProfile = localStorage.getItem('sportProfil');
-
-    if (!savedProfile) {
-        // No profile, show the no-profile message
-        return;
-    }
-
+    if (!savedProfile) return;
     const profile = JSON.parse(savedProfile);
     const noProfile = document.getElementById('noProfile');
     const profileConseils = document.getElementById('profileConseils');
-
     if (noProfile && profileConseils) {
         noProfile.classList.add('hidden');
         profileConseils.classList.remove('hidden');
-
-        // Update profile display
         const niveauData = conseilsData[profile.niveau];
         const objectifData = objectifsData[profile.objectif];
-
         document.getElementById('levelIcon').textContent = niveauData.icon;
         document.getElementById('levelText').textContent = niveauData.text;
         document.getElementById('goalIcon').textContent = objectifData.icon;
         document.getElementById('goalText').textContent = objectifData.text;
-
-        // Update subtitle
         document.getElementById('profileDescription').textContent =
-            `Voici tes conseils personnalisés en tant que ${niveauData.text.toLowerCase()} visant ${objectifData.text.toLowerCase()} !`;
-
-        // Display conseils
-        const conseils = niveauData.conseils;
-        for (let i = 0; i < conseils.length; i++) {
-            document.getElementById(`conseil${i + 1}Title`).textContent = conseils[i].title;
-            document.getElementById(`conseil${i + 1}Text`).textContent = conseils[i].text;
-        }
+            `Voici tes conseils en tant que ${niveauData.text.toLowerCase()} visant à ${objectifData.text.toLowerCase()} !`;
+        niveauData.conseils.forEach((conseil, i) => {
+            document.getElementById(`conseil${i + 1}Title`).textContent = conseil.title;
+            document.getElementById(`conseil${i + 1}Text`).textContent = conseil.text;
+        });
     }
 }
 
-// Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
-    // Check if we're on the questionnaire page
-    if (document.getElementById('question1')) {
-        initQuiz();
-    }
+    if (document.getElementById('question1')) initQuiz();
 });

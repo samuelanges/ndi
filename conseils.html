@@ -4,40 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conseils - Profilage Sportif</title>
+    <title>Conseils - NIRD</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <span class="brand-icon">🏃</span>
-                <span class="brand-text">SportProfil</span>
+                <span class="brand-icon">🦋</span>
+                <span class="brand-text">NIRD</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="questionnaire.html">Questionnaire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="conseils.html">Conseils</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="conseils.html">Conseils</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Conseils Section -->
     <section class="conseils-section">
         <div class="container">
             <div class="conseils-header text-center">
@@ -50,12 +41,11 @@
                 </p>
             </div>
 
-            <!-- No Profile Yet -->
             <div class="no-profile-container" id="noProfile">
                 <div class="no-profile-card">
-                    <div class="no-profile-icon">🎯</div>
+                    <div class="no-profile-icon">🦋</div>
                     <h3>Tu n'as pas encore de profil</h3>
-                    <p>Réponds au questionnaire pour découvrir tes conseils personnalisés !</p>
+                    <p>Réponds au questionnaire pour découvrir tes conseils éco-numériques personnalisés !</p>
                     <a href="questionnaire.html" class="btn btn-start">
                         <span>Faire le quiz</span>
                         <span class="btn-arrow">→</span>
@@ -63,7 +53,6 @@
                 </div>
             </div>
 
-            <!-- Profile Conseils -->
             <div class="profile-conseils hidden" id="profileConseils">
                 <div class="profile-summary">
                     <div class="profile-card">
@@ -74,16 +63,15 @@
                         </div>
                     </div>
                     <div class="profile-card">
-                        <div class="profile-icon" id="goalIcon">🧘</div>
+                        <div class="profile-icon" id="goalIcon">📱</div>
                         <div class="profile-info">
                             <span class="profile-label">Ton objectif</span>
-                            <span class="profile-value" id="goalText">Remise en forme</span>
+                            <span class="profile-value" id="goalText">Réduire mon usage</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="conseils-grid">
-                    <!-- Conseil 1 -->
                     <div class="conseil-card">
                         <div class="conseil-number">1</div>
                         <div class="conseil-content">
@@ -91,8 +79,6 @@
                             <p class="conseil-text" id="conseil1Text">Conseil description</p>
                         </div>
                     </div>
-
-                    <!-- Conseil 2 -->
                     <div class="conseil-card">
                         <div class="conseil-number">2</div>
                         <div class="conseil-content">
@@ -100,8 +86,6 @@
                             <p class="conseil-text" id="conseil2Text">Conseil description</p>
                         </div>
                     </div>
-
-                    <!-- Conseil 3 -->
                     <div class="conseil-card">
                         <div class="conseil-number">3</div>
                         <div class="conseil-content">
@@ -109,8 +93,6 @@
                             <p class="conseil-text" id="conseil3Text">Conseil description</p>
                         </div>
                     </div>
-
-                    <!-- Conseil 4 -->
                     <div class="conseil-card">
                         <div class="conseil-number">4</div>
                         <div class="conseil-content">
@@ -122,25 +104,21 @@
 
                 <div class="conseils-cta text-center">
                     <p class="cta-text">Envie de refaire le quiz ?</p>
-                    <a href="questionnaire.html" class="btn btn-outline-custom">
-                        Recommencer le questionnaire
-                    </a>
+                    <a href="questionnaire.html" class="btn btn-outline-custom">Recommencer le questionnaire</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
-            <p>© 2024 SportProfil - Niveau 1 Profilage Sportif</p>
+            <p>© 2024 NIRD - Numérique Inclusif Responsable Durable</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <script>
-        // Load conseils on page load
         document.addEventListener('DOMContentLoaded', function () {
             loadConseils();
         });
